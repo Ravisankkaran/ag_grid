@@ -55,7 +55,7 @@ export default {
           headerName: 'Status',
           width: 150,
           minWidth: 100,
-          cellClass: 'center-text',
+          cellClass: 'center-status',
           cellRenderer: this.statusRenderer
         },
         {

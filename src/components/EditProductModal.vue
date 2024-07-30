@@ -1,7 +1,7 @@
 <template>
     <div id="modal-container">
         <!-- b-modal to that handel edit button -->
-    <b-modal :visible="showModal" title="Edit Product" @ok="submitForm" @hidden="cancelEdit">
+    <b-modal :visible="showModal" title="Edit Product" hide-footer @ok="submitForm" @hidden="cancelEdit">
       <!-- form container -->
       <form @submit.prevent="submitForm">
         <div class="form-group">
@@ -25,8 +25,10 @@
           <b-form-input v-model="localProduct.image" id="image" required />
         </div>
         <template>
-          <b-button type="submit" variant="primary">Save</b-button>
-          <b-button variant="secondary" @click="cancelEdit">Cancel</b-button>
+            <div class="button-container">
+          <b-button type="submit" variant="outline-secondary">Save</b-button>
+          <b-button variant="outline-secondary" @click="cancelEdit" >Cancel</b-button>
+        </div>
         </template>
       </form>
     </b-modal>
@@ -69,4 +71,10 @@
   </script>
   
  
-  
+  <style scoped>
+  .button-container{
+        display: flex;
+        justify-content: center;
+        gap:20px
+      }
+  </style>

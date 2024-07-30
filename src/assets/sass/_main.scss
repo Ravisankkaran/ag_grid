@@ -30,11 +30,16 @@
         text-align: center;
 
       }
-      
-      .center-text{
+      .center-status{
         // color: brown;
         display: flex;
         justify-content: center;
+        align-items: center;
+      }
+      .center-text{
+        // color: brown;
+        display: flex;
+        // justify-content: center;
         align-items: center;
       }
       .ag-header-cell-label{

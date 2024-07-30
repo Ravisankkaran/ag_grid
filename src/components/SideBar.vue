@@ -17,7 +17,9 @@
             <b-form-input v-model="newProduct.count" type="text" id="text-count"></b-form-input>
             <label for="text-image">Product Image</label>
             <b-form-input v-model="newProduct.image" type="text" id="text-image"></b-form-input>
-            <b-button variant="outline-secondary" type="submit">Submit</b-button>
+            <div class="d-flex justify-content-center mt-3">
+               <b-button variant="outline-secondary" type="submit">Submit</b-button>
+            </div>
           </b-form>
         </div>
       </b-sidebar>
