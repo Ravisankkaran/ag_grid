@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <div class="container">
-      <!-- side-bar fro adding products -->
+      <!-- side-bar for adding products -->
       <div class="sidebar-container"><side-bar @add-product="addProductToGrid" /></div>
-      <!-- ag-grid tables defining all theames and basic styles -->
+      <!-- ag-grid tables defining all themes and basic styles -->
       <ag-grid-vue
-      
         class="ag-theme-alpine"
         style="height: 500px;"
         :columnDefs="columnDefs"
@@ -22,11 +21,10 @@
 <script>
 // import components
 import SideBar from './components/SideBar.vue';
-/* eslint-disable */ 
+/* eslint-disable */
 import EditButton from './components/EditButton.vue';
 import EditModal from './components/EditProductModal.vue';
 import { AgGridVue } from 'ag-grid-vue';
-//added comment for error that occurs due to a component that has be registred but not used anywhere
 // event bus imported
 import { EventBus } from './EventBus';
 
@@ -41,32 +39,33 @@ export default {
   data() {
     return {
       // declare table data
-      rowData: [],//row data is just declared bcz datas will be imported from fakestore api 
+      rowData: [], // row data is just declared because data will be imported from Fake Store API
       columnDefs: [
         { field: 'id', headerName: 'ID', hide: true },
-        { field: 'title', headerName: 'Product Title' },
-        { field: 'price', headerName: 'Price' },
-        { field: 'category', headerName: 'Category' },
-        { field: 'image', headerName: 'Image' },
+        { field: 'title', headerName: 'Product Title', width: 350, minWidth: 200 },
+        { field: 'price', headerName: 'Price', width: 150, minWidth: 100 },
+        { field: 'category', headerName: 'Category', width: 150, minWidth: 100 },
+        { field: 'image', headerName: 'Image', width: 350, minWidth: 200 },
         {
-          // column that render cell with default command(user declare)
+          // column that render cell with default command (user declare)
           field: 'action',
           headerName: 'Action',
-          cellRenderer: 'EditButton'
+          cellRenderer: 'EditButton',
+          width: 100,
+          minWidth: 80
         }
-        
       ],
       // initialize variable as null/false at initial point
-      gridApi:null,
+      gridApi: null,
       showModal: false,
       selectedProduct: null,
     };
   },
-  // on mounted check for any emit is occuring from child component
-  mounted(){
+  // on mounted check for any emit is occurring from child component
+  mounted() {
     EventBus.$on('edit-product', this.handleEditProduct);
   },
-  // on created products are fetched from fakestore api and saved in rowdata
+  // on created products are fetched from Fake Store API and saved in rowData
   created() {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
@@ -75,7 +74,7 @@ export default {
       });
   },
   methods: {
-    // writing methods for each functions 
+    // writing methods for each function
     addProductToGrid(product) {
       this.rowData = [...this.rowData, product];
     },
@@ -86,13 +85,11 @@ export default {
     saveProduct(updatedProduct) {
       const index = this.rowData.findIndex(p => p.id === updatedProduct.id);
       if (index !== -1) {
-        this.rowData[index]=updatedProduct
-        const newProducts = this.rowData
-        this.rowData = [...newProducts]
-        console.log(this.gridApi)
-        // this.rowData.push(updatedProduct)
-        // this.$set(this.rowData, index, updatedProduct);
-        console.log(this.rowData)
+        this.rowData[index] = updatedProduct;
+        const newProducts = this.rowData;
+        this.rowData = [...newProducts];
+        console.log(this.gridApi);
+        console.log(this.rowData);
       }
       this.closeModal();
     },
