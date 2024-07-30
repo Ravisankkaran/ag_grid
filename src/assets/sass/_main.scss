@@ -30,6 +30,27 @@
         text-align: center;
 
       }
+      
+.status-available {
+  background-color: lightgreen;
+  color: green;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 0 10px;
+  text-align: center;
+  display: inline-block; /* To ensure proper padding and alignment */
+}
+
+.status-out-of-stock {
+  background-color: lightcoral;
+  color: red;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 0 10px;
+  text-align: center;
+  display: inline-block; /* To ensure proper padding and alignment */
+}
+
       .center-status{
         // color: brown;
         display: flex;

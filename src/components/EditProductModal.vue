@@ -1,38 +1,42 @@
 <template>
     <div id="modal-container">
-        <!-- b-modal to that handel edit button -->
-    <b-modal :visible="showModal" title="Edit Product" hide-footer @ok="submitForm" @hidden="cancelEdit">
-      <!-- form container -->
-      <form @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <b-form-input v-model="localProduct.title" id="title" required />
-        </div>
-        <div class="form-group">
-          <label for="price">Price</label>
-          <b-form-input v-model="localProduct.price"  id="price" required />
-        </div>
-        <div class="form-group">
+      <b-modal
+        ref="editModal"
+        v-model="localShowModal"
+        title="Edit Product"
+        hide-footer
+        @ok="submitForm"
+        @hidden="handleHidden"
+      >
+        <!-- form container -->
+        <form @submit.prevent="submitForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <b-form-input v-model="localProduct.title" id="title" required />
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <b-form-input v-model="localProduct.price" id="price" required />
+          </div>
+          <div class="form-group">
             <label for="category">Category</label>
-          <b-form-input v-model="localProduct.category" id="category" required />
-        </div>
-        <div class="form-group">
-            <label for="count">count</label>
-          <b-form-input v-model="localProduct.count" id="count" required />
-        </div>
-        <div class="form-group">
-          <label for="image">Image URL</label>
-          <b-form-input v-model="localProduct.image" id="image" required />
-        </div>
-        <template>
-            <div class="button-container">
-          <b-button type="submit" variant="outline-secondary">Save</b-button>
-          <b-button variant="outline-secondary" @click="cancelEdit" >Cancel</b-button>
-        </div>
-        </template>
-      </form>
-    </b-modal>
-</div>
+            <b-form-input v-model="localProduct.category" id="category" required />
+          </div>
+          <div class="form-group">
+            <label for="rating.count">Count</label>
+            <b-form-input v-model="localProduct.rating.count" id="count" required />
+          </div>
+          <div class="form-group">
+            <label for="image">Image URL</label>
+            <b-form-input v-model="localProduct.image" id="image" required />
+          </div>
+          <div class="button-container">
+            <b-button type="submit" variant="outline-secondary">Save</b-button>
+            <b-button variant="outline-secondary" @click="cancelEdit">Cancel</b-button>
+          </div>
+        </form>
+      </b-modal>
+    </div>
   </template>
   
   <script>
@@ -43,8 +47,8 @@
     },
     data() {
       return {
-        // using spread method assigning to localproduct
-        localProduct: { ...this.product }
+        localProduct: { ...this.product },
+        localShowModal: this.showModal
       };
     },
     watch: {
@@ -52,29 +56,38 @@
         this.localProduct = { ...newProduct };
       },
       showModal(newVal) {
-        if (!newVal) {
-          this.localProduct = { ...this.product };
+        this.localShowModal = newVal;
+        if (newVal) {
+          this.$nextTick(() => {
+            this.$refs.editModal.show();
+          });
+        } else {
+          this.$refs.editModal.hide();
         }
       }
     },
     methods: {
       submitForm() {
-        this.localProduct.price= Number(this.localProduct.price)
+        this.localProduct.price = Number(this.localProduct.price);
         this.$emit('save-product', this.localProduct);
-        this.cancelEdit();
+        this.handleHidden();
       },
       cancelEdit() {
+        this.handleHidden();
         this.$emit('close');
+      },
+      handleHidden() {
+        this.localShowModal = false;
       }
     }
   }
   </script>
   
- 
   <style scoped>
-  .button-container{
-        display: flex;
-        justify-content: center;
-        gap:20px
-      }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
   </style>
+  
