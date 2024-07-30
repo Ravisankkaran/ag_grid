@@ -50,6 +50,8 @@ export default {
         { field: 'price', headerName: 'Price', width: 150, minWidth: 100 ,cellClass: 'center-text',  cellRenderer: params => `$ ${params.value}`},
         { field: 'category', headerName: 'Category', width: 200, minWidth: 100,cellClass: 'center-text' },
         { field: 'rating.rate', headerName: 'Rating', width: 150, minWidth: 100 , cellClass: 'center-text', cellRenderer: this.starRatingRenderer},
+        { field: 'rating.count', headerName: 'Avilable Quantity', width: 150, minWidth: 100 , cellClass: 'center-text',cellRenderer: params => ` ${params.value} Nos`},
+        
         { 
           field: 'rating.count',
           headerName: 'Status',
@@ -136,6 +138,7 @@ export default {
     },
     handleEditProduct(product) {
       this.selectedProduct = { ...product }; // Clone the product object to avoid direct mutations
+      console.log(product)
       this.showModal = true;
     },
     saveProduct(updatedProduct) {
