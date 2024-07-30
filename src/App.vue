@@ -45,7 +45,7 @@ export default {
       rowData: [],
       columnDefs: [
         { field: 'id', headerName: 'ID', hide: true },
-        { field: 'title', headerName: 'Product Title', width: 350, minWidth: 200, cellClass: 'center-text', wrapText: true },
+        { field: 'title', headerName: 'Product Title', width: 350, minWidth: 200, cellClass: 'center-text', wrapText: true,tooltipField: 'title'  },
         { field: 'image', headerName: 'Image', width: 150, cellRenderer: params => `<img src="${params.value}" style="width: 100px; height: 100px; padding: 10px;" />` },
         { field: 'price', headerName: 'Price', width: 150, minWidth: 100, cellClass: 'center-text', cellRenderer: params => `$ ${params.value}` },
         { field: 'category', headerName: 'Category', width: 200, minWidth: 100, cellClass: 'center-text' },
