@@ -18,12 +18,14 @@
         white-space: nowrap; 
       }
       .ag-header-cell-text{
-        min-width: 450px;
+        text-align: center;
+
       }
-      .ag-header{
-        min-width: 250px; /* Set your desired minimum width */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap; 
+      
+      .center-text{
+        text-align: center;
+      }
+      .ag-header-cell-label{
+        justify-content: center;
       }
 }

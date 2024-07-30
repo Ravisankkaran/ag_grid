@@ -9,6 +9,7 @@
         style="height: 500px;"
         :columnDefs="columnDefs"
         :rowData="rowData"
+         :gridOptions="gridOptions"
         @grid-ready="onGridReady"
       >
       </ag-grid-vue>
@@ -42,10 +43,13 @@ export default {
       rowData: [], // row data is just declared because data will be imported from Fake Store API
       columnDefs: [
         { field: 'id', headerName: 'ID', hide: true },
-        { field: 'title', headerName: 'Product Title', width: 350, minWidth: 200 },
-        { field: 'price', headerName: 'Price', width: 150, minWidth: 100 },
-        { field: 'category', headerName: 'Category', width: 150, minWidth: 100 },
-        { field: 'image', headerName: 'Image', width: 350, minWidth: 200 },
+        { field: 'title', headerName: 'Product Title', width: 350, minWidth: 200,cellClass: 'center-text' },
+        { field: 'price', headerName: 'Price', width: 150, minWidth: 100 ,cellClass: 'center-text'},
+        { field: 'category', headerName: 'Category', width: 200, minWidth: 100,cellClass: 'center-text' },
+        { field: 'rating.count', headerName: 'Avilabe Quantity', width: 150, minWidth: 100 ,cellClass: 'center-text'},
+        { field: 'image', headerName: 'Image', width:150,
+         cellRenderer: params => `<img src="${params.value}" style="width: 100px; height: 100px;" />` 
+        },
         {
           // column that render cell with default command (user declare)
           field: 'action',
@@ -55,6 +59,9 @@ export default {
           minWidth: 80
         }
       ],
+      gridOptions: {
+        rowHeight: 100  // Set row height to 40px
+      },
       // initialize variable as null/false at initial point
       gridApi: null,
       showModal: false,

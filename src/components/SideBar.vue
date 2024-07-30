@@ -13,6 +13,8 @@
             <b-form-input v-model="newProduct.price"  id="text-price"></b-form-input>
             <label for="text-category">Category</label>
             <b-form-input v-model="newProduct.category" type="text" id="text-category"></b-form-input>
+            <label for="text-category">count</label>
+            <b-form-input v-model="newProduct.count" type="text" id="text-count"></b-form-input>
             <label for="text-image">Product Image</label>
             <b-form-input v-model="newProduct.image" type="text" id="text-image"></b-form-input>
             <b-button variant="outline-secondary" type="submit">Submit</b-button>

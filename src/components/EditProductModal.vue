@@ -13,9 +13,12 @@
           <b-form-input v-model="localProduct.price"  id="price" required />
         </div>
         <div class="form-group">
-            <label for="dropdown-category">Select Category</label>       
             <label for="category">Category</label>
           <b-form-input v-model="localProduct.category" id="category" required />
+        </div>
+        <div class="form-group">
+            <label for="count">count</label>
+          <b-form-input v-model="localProduct.count" id="count" required />
         </div>
         <div class="form-group">
           <label for="image">Image URL</label>
