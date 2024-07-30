@@ -96,8 +96,9 @@ export default {
       let stars = '';
 
       for (let i = 0; i < maxStars; i++) {
-        stars += `<i class="fa ${i < rating ? 'fa-star' : 'fa-star-o'}"></i>`;
-      }
+  stars += `<i class="bi ${i < rating ? 'bi-star-fill' : 'bi-star'}"></i>`;
+}
+
 
       return stars;
     },

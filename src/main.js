@@ -8,6 +8,8 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 Vue.config.productionTip = false
 
 // Install BootstrapVue
