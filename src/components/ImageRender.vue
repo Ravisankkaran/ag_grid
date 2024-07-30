@@ -13,3 +13,8 @@ export default{
   }
 }
 </script>
+<style scoped>
+img{
+    padding: 20px;
+}
+</style>

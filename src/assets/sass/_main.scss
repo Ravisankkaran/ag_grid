@@ -5,12 +5,21 @@
     }
     .ag-theme-alpine {
         --ag-header-height: 30px;
-        --ag-header-column-resize-handle-width: 5px;
-        --ag-header-foreground-color: white;
-        --ag-header-background-color: black;
-        --ag-header-cell-hover-background-color: rgb(80, 40, 140);
-        --ag-header-cell-moving-background-color: rgb(80, 40, 140);
+        --ag-borders: none;
     }
+    .ag-header{
+        height: 50px !important;
+    }
+    .ag-header-cell-label {
+        font-weight: bold;
+      }
+      .ag-header-row {
+        height: 60px !important; /* Increase header height */
+      }
+      
+      .ag-row {
+        margin-bottom: 10px; /* Add margin after each row */
+      }
     .ag-cell {
         // min-width: 250px; /* Set your desired minimum width */
         overflow: hidden;
@@ -23,7 +32,10 @@
       }
       
       .center-text{
-        text-align: center;
+        // color: brown;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .ag-header-cell-label{
         justify-content: center;
