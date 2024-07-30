@@ -1,0 +1,29 @@
+#app{
+    .sidebar-container{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .ag-theme-alpine {
+        --ag-header-height: 30px;
+        --ag-header-column-resize-handle-width: 5px;
+        --ag-header-foreground-color: white;
+        --ag-header-background-color: black;
+        --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+        --ag-header-cell-moving-background-color: rgb(80, 40, 140);
+    }
+    .ag-cell {
+        // min-width: 250px; /* Set your desired minimum width */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+      }
+      .ag-header-cell-text{
+        min-width: 450px;
+      }
+      .ag-header{
+        min-width: 250px; /* Set your desired minimum width */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+      }
+}
