@@ -23,7 +23,7 @@
             <b-form-input v-model="localProduct.category" id="category" required />
           </div>
           <div class="form-group">
-            <label for="rating.count">Count</label>
+            <label for="count">Count</label>
             <b-form-input v-model="localProduct.rating.count" id="count" required />
           </div>
           <div class="form-group">
