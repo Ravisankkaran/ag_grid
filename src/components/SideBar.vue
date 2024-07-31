@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div id="sidebar">
       <!-- sidebar container -->
-      <b-button v-b-toggle.sidebar-right>Add Product</b-button>
+      <b-button class="inner-text" v-b-toggle.sidebar-right>Add Product</b-button>
       <b-sidebar id="sidebar-right" title="Add Product" right shadow>
         <div class="px-3 py-2">
           <!-- b-form that will handel submit also -->

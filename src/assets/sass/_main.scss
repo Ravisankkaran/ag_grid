@@ -1,11 +1,18 @@
 #app{
     .sidebar-container{
         display: flex;
-        justify-content: flex-end;
+        // justify-content: flex-end;
+        justify-content: center;
+        padding: 20px;
+    }
+    .title{
+        text-align: center;
+        font-weight: 700;
     }
     .ag-theme-alpine {
         --ag-header-height: 30px;
         --ag-borders: none;
+        --ag-border-radius: 10px;
     }
     .ag-header{
         height: 50px !important;
@@ -66,4 +73,45 @@
       .ag-header-cell-label{
         justify-content: center;
       }
+      /* Custom styles for the vertical scrollbar viewport */
+.ag-body-vertical-scroll-viewport {
+    // background-color: #f8f9fa; /* Light gray background */
+    border-left: 1px solid #dee2e6; /* Light border to distinguish scrollbar area */
+    padding-right: 10px; /* Extra padding if needed */
+  }
+  
+  /* Custom styles for the vertical scrollbar itself */
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+  }
+  
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb {
+    background-color: #6c757d; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-track {
+    // background-color: #f8f9fa; /* Background color of the scrollbar track */
+  }
+  /* Custom styles for the horizontal scrollbar viewport */
+.ag-body-horizontal-scroll-viewport {
+    // background-color: #f8f9fa; /* Light gray background */
+    border-top: 1px solid #dee2e6; /* Light border to distinguish scrollbar area */
+    padding-bottom: 10px; /* Extra padding if needed */
+  }
+  
+  /* Custom styles for the horizontal scrollbar itself */
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar {
+    height: 6px; /* Height of the scrollbar */
+  }
+  
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb {
+    background-color: #6c757d; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-track {
+    // background-color: #f8f9fa; /* Background color of the scrollbar track */
+  }
+  
 }

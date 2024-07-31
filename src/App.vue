@@ -3,11 +3,11 @@
     <div class="container">
       <!-- side bar container -->
       <div class="sidebar-container">
-        <side-bar @add-product="addProductToGrid" />
+      <h2 class="title col-11 ml-3 ">Admin Dashboard</h2><span><side-bar  @add-product="addProductToGrid" /></span>
+        
       </div>
       <!-- Ag-grid TABLE -->
       <ag-grid-vue
-      
         class="ag-theme-alpine"
         style="height: 500px;"
         :columnDefs="columnDefs"

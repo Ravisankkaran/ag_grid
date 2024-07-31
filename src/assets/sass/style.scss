@@ -1,6 +1,13 @@
 
 
-@import '@/assets/sass/_main.scss';
-@import '@/assets/sass/modal-container.scss';
-@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import '_main.scss';
+@import '_modalcontainer.scss';
+@import '_editbtn';
+@import '_sidebar';
 
+
+.model-box-button-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
