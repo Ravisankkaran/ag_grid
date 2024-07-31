@@ -1,5 +1,6 @@
 <template>
     <div id="modal-container">
+        <!-- use b-modal -->
       <b-modal
         ref="editModal"
         v-model="localShowModal"
@@ -47,11 +48,13 @@
     },
     data() {
       return {
+        // spread product in localproduct
         localProduct: { ...this.product },
         localShowModal: this.showModal
       };
     },
     watch: {
+        // check whether new product is selected
       product(newProduct) {
         this.localProduct = { ...newProduct };
       },
@@ -67,11 +70,13 @@
       }
     },
     methods: {
+        // 1.submitform
       submitForm() {
         this.localProduct.price = Number(this.localProduct.price);
         this.$emit('save-product', this.localProduct);
         this.handleHidden();
       },
+    //   2.cancel
       cancelEdit() {
         this.handleHidden();
         this.$emit('close');

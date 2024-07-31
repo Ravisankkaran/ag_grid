@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div class="container">
+      <!-- side bar container -->
       <div class="sidebar-container">
         <side-bar @add-product="addProductToGrid" />
       </div>
+      <!-- Ag-grid TABLE -->
       <ag-grid-vue
+      
         class="ag-theme-alpine"
         style="height: 500px;"
         :columnDefs="columnDefs"
@@ -13,6 +16,7 @@
         @grid-ready="onGridReady"
       >
       </ag-grid-vue>
+      <!-- modal-view -->
       <EditModal
         :product="selectedProduct"
         :showModal="showModal"
@@ -29,11 +33,13 @@ import SideBar from './components/SideBar.vue';
 /* eslint-disable */
 import EditButton from './components/EditButton.vue';
 import EditModal from './components/EditProductModal.vue';
+// import ag-grid and Event bus
 import { AgGridVue } from 'ag-grid-vue';
 import { EventBus } from './EventBus';
 
 export default {
   name: 'App',
+  // components
   components: {
     AgGridVue,
     SideBar,
@@ -42,6 +48,7 @@ export default {
   },
   data() {
     return {
+      // initilize row and column data
       rowData: [],
       columnDefs: [
         { field: 'id', headerName: 'ID', hide: true },
@@ -57,15 +64,18 @@ export default {
       gridOptions: {
         rowHeight: 100
       },
+      // initialize variable at initial state
       gridApi: null,
       showModal: false,
       selectedProduct: null,
     };
   },
   mounted() {
+    // recive data from child component through event-bus
     EventBus.$on('edit-product', this.handleEditProduct);
   },
   created() {
+    // fetch row data from fake store api
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => {
@@ -73,6 +83,8 @@ export default {
       });
   },
   methods: {
+    // declare methods
+    // 1.rating
     starRatingRenderer(params) {
       const rating = params.value;
       const maxStars = 5;
@@ -84,6 +96,7 @@ export default {
 
       return stars;
     },
+    // 2.remainder
     statusRenderer(params) {
   const count = params.value;
   const statusClass = count > 150 ? 'status-available' : 'status-out-of-stock';
@@ -91,13 +104,16 @@ export default {
 
   return `<div class="${statusClass}">${statusText}</div>`;
 },
+// 3.add product
     addProductToGrid(product) {
       this.rowData = [...this.rowData, product];
     },
+    // 3.edit button
     handleEditProduct(product) {
       this.selectedProduct = { ...product };
       this.showModal = true;
     },
+    // 4.save product
     saveProduct(updatedProduct) {
       const index = this.rowData.findIndex(p => p.id === updatedProduct.id);
       if (index !== -1) {
@@ -106,6 +122,7 @@ export default {
       }
       this.closeModal();
     },
+    // 5.close modal
     closeModal() {
       this.showModal = false;
     },
